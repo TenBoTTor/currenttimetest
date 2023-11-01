@@ -1,0 +1,39 @@
+#此工作流将在创建版本时使用捻上传计算机编程语言包
+#有关更多信息,请参见:https://docs .github .com/en/actions/automating-build-and-tests/build-and-testing-python # publishing-to-package-registries
+
+#此工作流程使用了未经开源代码库认证的操作。
+#它们由第三方提供,并受
+#单独的服务条款、隐私政策和支持
+#文档。
+
+名字: 计算机编程语言
+
+在:
+释放；排放；发布:
+类型: [出版]
+
+许可:
+内容: 阅读
+
+工作:
+部署:
+
+连续运行: Ubuntu-最新版
+
+步伐:
+    - 使用: 动作/签出@v3
+    - 名字: 设置计算机编程语言
+使用: 操作/设置-python@v3
+随着:
+大蟒版本: 3.x'
+    - 名字: 安装依赖项
+奔跑: |
+python -m pip安装-升级点
+点安装版本
+    - 名字: 构建包
+奔跑: python -m构建
+    - 名字: 发布包
+使用: pypa/GH-action-pypi-publish @ 27b 31702 a0e 7 fc 50959 F5 ad 993 c 78 deac 1 bdfc 29
+随着:
+用户: __token__
+密码: ${{秘密。PYPI_API_TOKEN}}
